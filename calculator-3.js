@@ -13,7 +13,7 @@ function clearAreas() {
 }
 
 let firstNumber
-let selectedOperation;
+let selectedOperation = null;
 
 
 
@@ -34,11 +34,19 @@ function numberButtonClickListener(e) {
 }
 
 function operationsButtonClickListener(e) {
-    firstNumber = Number(input.value);
-    inputFirst.value = Number(input.value);
-    input.value = null;
-    selectedOperation = e.currentTarget.innerHTML;
-    e.currentTarget.classList.add('active')
+    if (selectedOperation == null) {
+        firstNumber = Number(input.value);
+        inputFirst.value = Number(input.value);
+        input.value = null;
+        selectedOperation = e.currentTarget.innerHTML;
+        e.currentTarget.classList.add('active')
+    } else {
+        selectedOperation = e.currentTarget.innerHTML;
+        for (let i = 0; i < operations.length; i++) {
+            operations[i].classList.remove('active');
+        }
+        e.currentTarget.classList.add('active')
+    }
 }
 
 
@@ -63,8 +71,9 @@ function resultButtonClickListener() {
     for (let i = 0; i < operations.length; i++) {
         operations[i].classList.remove('active');
     };
-    inputFirst.value = null
-    input.value = result
+    inputFirst.value = result;
+    firstNumber = result
+    input.value = null
 }
 
 
