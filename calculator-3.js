@@ -14,7 +14,12 @@ function clearAreas() {
 
 let firstNumber
 let selectedOperation = null;
-
+let checkValues = () =>  {setTimeout(() => {
+    if (firstNumber === Infinity || isNaN(firstNumber)) {
+        firstNumber = '';
+        inputFirst.value = ''
+    }
+}, 1000)}
 
 
 for (let i = 0; i < numbers.length; i++) {
@@ -47,32 +52,41 @@ function operationsButtonClickListener(e) {
         }
         e.currentTarget.classList.add('active')
     }
+    checkValues()
 }
 
 
 function resultButtonClickListener() {
     let secondNumber = Number(input.value);
     let result = 0;
-    if (selectedOperation === '+') {
-        result = sum(firstNumber, secondNumber);
-    } else if (selectedOperation === '-') {
-        result = minus(firstNumber, secondNumber);
-    } else if (selectedOperation === '*') {
-        result = multiply(firstNumber, secondNumber);
-    } else if (selectedOperation === '/') {
-        result = divide(firstNumber, secondNumber);
-    } else if (selectedOperation === `x<sup>y</sup>`) {
-        result = expon(firstNumber, secondNumber);
-    } else if (selectedOperation === `<sup>y</sup>√x`) {
-        result = sqr(firstNumber, secondNumber);
-    }else {
-        window.alert('Operation is unknown')
+    switch (selectedOperation) {
+        case '+':
+            result = sum(firstNumber, secondNumber);
+            break;
+        case '-':
+            result = minus(firstNumber, secondNumber);
+            break;
+        case '*':
+            result = multiply(firstNumber, secondNumber);
+            break;
+        case '/':
+            result = divide(firstNumber, secondNumber);
+            break;
+        case 'x<sup>y</sup>':
+            result = expon(firstNumber, secondNumber);
+            break;
+        case '<sup>y</sup>√x':
+            result = sqr(firstNumber, secondNumber);
+            break;
+        default:
+            window.alert('Operation is unknown')
     }
     for (let i = 0; i < operations.length; i++) {
         operations[i].classList.remove('active');
-    };
+    }
     inputFirst.value = result;
-    firstNumber = result
+    firstNumber = result;
+    checkValues();
     input.value = null
 }
 
@@ -86,5 +100,4 @@ function cancelButtonClickListener(){
 
 resultButton.addEventListener('click', resultButtonClickListener);
 cancelButton.addEventListener('click', cancelButtonClickListener);
-clearButton.addEventListener('click', clearAreas);
 clearButton.addEventListener('click', clearAreas);
