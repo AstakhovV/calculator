@@ -8,10 +8,6 @@ let inputFirst = document.getElementById('number-first');
 
 input.value = 0;
 
-function clearAreas() {
-    input.value = input.value.slice(0,-1)
-}
-
 let firstNumber
 let selectedOperation = null;
 let checkValues = () =>  {setTimeout(() => {
@@ -21,14 +17,21 @@ let checkValues = () =>  {setTimeout(() => {
     }
 }, 1000)}
 
-
-for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener('click', numberButtonClickListener);
-    }
-for (let i = 0; i < operations.length; i++) {
-    operations[i].addEventListener('click', operationsButtonClickListener);
+for (const number of numbers) {
+    number.addEventListener('click', numberButtonClickListener);
+}
+for (const operation of operations) {
+    operation.addEventListener('click', operationsButtonClickListener);
+}
+let clearActiveClass = () => {
+    operations.forEach((operation) => {
+        operation.classList.remove('active');
+    })
 }
 
+function clearAreas() {
+    input.value = input.value.slice(0,-1)
+}
 function numberButtonClickListener(e) {
     if (input.value === '0') {
         input.value = null;
@@ -47,9 +50,7 @@ function operationsButtonClickListener(e) {
         e.currentTarget.classList.add('active')
     } else {
         selectedOperation = e.currentTarget.innerHTML;
-        for (let i = 0; i < operations.length; i++) {
-            operations[i].classList.remove('active');
-        }
+        clearActiveClass();
         e.currentTarget.classList.add('active')
     }
     checkValues()
@@ -81,15 +82,12 @@ function resultButtonClickListener() {
         default:
             window.alert('Operation is unknown')
     }
-    for (let i = 0; i < operations.length; i++) {
-        operations[i].classList.remove('active');
-    }
+    clearActiveClass();
     inputFirst.value = result;
     firstNumber = result;
     checkValues();
     input.value = null
 }
-
 
 function cancelButtonClickListener(){
     firstNumber = null;
