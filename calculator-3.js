@@ -5,6 +5,7 @@ let numbers = document.querySelectorAll('.number');
 let operations = document.querySelectorAll('.operation');
 let input = document.getElementById('number-string');
 let inputFirst = document.getElementById('number-first');
+let dotInput = document.querySelector('.dot')
 
 input.value = 0;
 
@@ -17,12 +18,14 @@ let checkValues = () =>  {setTimeout(() => {
     }
 }, 1000)}
 
-for (const number of numbers) {
-    number.addEventListener('click', numberButtonClickListener);
+for (let i=0; i< numbers.length; i++) {
+    numbers[i].addEventListener('click', numberButtonClickListener);
 }
 for (const operation of operations) {
     operation.addEventListener('click', operationsButtonClickListener);
 }
+dotInput.addEventListener('click', numberButtonClickListener);
+
 let clearActiveClass = () => {
     operations.forEach((operation) => {
         operation.classList.remove('active');
@@ -32,16 +35,24 @@ let clearActiveClass = () => {
 function clearAreas() {
     input.value = input.value.slice(0,-1)
 }
+
 function numberButtonClickListener(e) {
     if (input.value === '0') {
+        if (input.value.indexOf('.') >= 0) {
+            dotInput.removeEventListener('click', numberButtonClickListener)
+        }
         input.value = null;
         input.value = input.value + e.currentTarget.innerHTML;
     } else {
+        if (input.value.indexOf('.') >= 0) {
+            dotInput.removeEventListener('click', numberButtonClickListener)
+        }
         input.value = input.value + e.currentTarget.innerHTML;
     }
 }
 
 function operationsButtonClickListener(e) {
+    dotInput.addEventListener('click', numberButtonClickListener);
     if (selectedOperation == null) {
         firstNumber = Number(input.value);
         inputFirst.value = Number(input.value);
@@ -58,6 +69,7 @@ function operationsButtonClickListener(e) {
 
 
 function resultButtonClickListener() {
+    dotInput.addEventListener('click', numberButtonClickListener);
     let secondNumber = Number(input.value);
     let result = 0;
     switch (selectedOperation) {
@@ -94,6 +106,7 @@ function cancelButtonClickListener(){
     inputFirst.value = null
     selectedOperation = null;
     input.value = '0';
+    clearActiveClass()
 }
 
 resultButton.addEventListener('click', resultButtonClickListener);
