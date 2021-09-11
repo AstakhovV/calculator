@@ -18,10 +18,7 @@ const Calculator = () => {
                 setInput(input.slice(0, -1))
             } else {
                 if (operator) {
-                    resultButtonClick()
-                    console.log(input)
-                    setInputBuffer(input)
-                    setInput('')
+                    alert('Ошибка ввода выражения')
                 } else {
                     setOperator(innerText)
                     setInputBuffer(input)

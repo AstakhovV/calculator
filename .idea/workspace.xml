@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69113cc9-9f7a-4270-8092-98c9dc58ce0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/calculator/src/Buttons.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calculator/src/Input.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calculator/src/calculator.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calculator/src/calculator.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calculator/src/utils/math.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator-3.js" beforeDir="false" afterPath="$PROJECT_DIR$/calculator-3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/math.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/src/calculator.css" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/src/calculator.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator/src/calculator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/calculator/src/calculator.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +72,7 @@
       <workItem from="1624671585310" duration="4204000" />
       <workItem from="1624702067979" duration="308000" />
       <workItem from="1631186876020" duration="9342000" />
-      <workItem from="1631329538666" duration="13651000" />
+      <workItem from="1631329538666" duration="14801000" />
     </task>
     <servers />
   </component>
